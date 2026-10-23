@@ -28,7 +28,7 @@ const stats = [
   { value: 2500, suffix: '+', label: 'Students Impacted', icon: Users },
   { value: 85, suffix: '%', label: 'High School Retention', icon: GraduationCap },
   { value: 60, suffix: '%', label: 'Girls Participation', icon: Trophy },
-  { value: 3, suffix: '', label: 'Cities in India', icon: Globe },
+  { value: 5, suffix: '', label: 'Cities in India', icon: Globe },
 ];
 
 // Programs data
@@ -79,7 +79,10 @@ export default function HomePage() {
   const impactInView = useInView(impactRef, { once: true });
 
   return (
-    <main className="bg-black overflow-x-hidden">
+    // overflow-x-clip (not -hidden): "hidden" turns this wrapper into its own scroll container,
+    // which stops the pinned timeline's position:sticky from ever sticking to the page.
+    // Also a <div>, not <main>: app/layout.tsx already provides the page's one <main> landmark.
+    <div className="bg-black overflow-x-clip">
       {/* HERO SECTION with Video Background */}
       <VideoHero
         videoSrc="/videos/hero-bg.mp4"
@@ -102,7 +105,7 @@ export default function HomePage() {
           >
             <span className="inline-flex items-center gap-2 glass-dark px-6 py-3 rounded-full text-sm font-bold tracking-wider uppercase border border-white/10">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              Changing Lives Since 2010
+              Changing Lives Since 2012
             </span>
           </motion.div>
 
@@ -311,7 +314,7 @@ export default function HomePage() {
               </p>
             </TextReveal>
             <h2 className="text-4xl md:text-6xl font-display text-white mb-6">
-              <WordReveal text="3 Cities, One Mission" delay={0.2} />
+              <WordReveal text="5 Cities, One Mission" delay={0.2} />
             </h2>
             <motion.p
               initial={{ opacity: 0 }}
@@ -347,7 +350,7 @@ export default function HomePage() {
               transition={{ delay: 0.5 }}
               className="text-gray-400 mt-4 text-lg"
             >
-              12 total programs so far across 3 cities in India
+              12 total programs so far across 5 cities in India
             </motion.p>
           </div>
 
@@ -447,11 +450,7 @@ export default function HomePage() {
             </motion.p>
           </div>
 
-          <FundraisingProgress
-            goal={100000}
-            raised={78500}
-            donors={342}
-          />
+          <FundraisingProgress goal={40000} raised={5000} year={2026} />
 
           {/* CTA */}
           <motion.div
@@ -550,6 +549,6 @@ export default function HomePage() {
           </motion.div>
         </motion.div>
       )}
-    </main>
+    </div>
   );
 }

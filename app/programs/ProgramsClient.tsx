@@ -47,8 +47,8 @@ const programs = [
 
 const locations = [
   { city: 'Chennai', year: '2012', students: '800+' },
-  { city: 'Bangalore', year: '2017', students: '1,200+' },
-  { city: 'Hyderabad', year: '2020', students: '500+' },
+  { city: 'Bangalore', year: '2024', students: '105' },
+  { city: 'Hyderabad', year: '2022 (one-year program)', students: '500+' },
 ]
 
 export default function ProgramsClient() {

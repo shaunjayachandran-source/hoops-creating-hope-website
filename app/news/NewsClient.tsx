@@ -4,9 +4,10 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Calendar, Clock, ArrowRight, Tag, User } from 'lucide-react'
+import { Calendar, Clock, ArrowRight, Tag, User, ExternalLink } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { blogPosts, type BlogPost } from '@/lib/data/blog-posts'
+import { pressCoverage } from '@/lib/news-data'
 
 const categories = ['All', 'Impact', 'Programs', 'Community', 'Events', 'Press'] as const
 
@@ -277,6 +278,40 @@ export default function NewsClient() {
               )}
             </motion.div>
           </AnimatePresence>
+        </div>
+      </section>
+
+      {/* In the press: independent coverage */}
+      <section aria-labelledby="in-the-press" className="py-20 border-t border-white/10">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 id="in-the-press" className="font-display text-4xl md:text-5xl text-white mb-3">
+            In the Press
+          </h2>
+          <p className="text-gray-400 mb-10 max-w-2xl">
+            What independent outlets have written about Hoops Creating Hope and our founder.
+          </p>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {pressCoverage.map((item) => (
+              <li key={item.url}>
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block h-full glass border border-white/10 hover:border-orange-primary/40 rounded-2xl p-6 transition-colors"
+                >
+                  <p className="text-sm text-orange-primary font-bold uppercase tracking-wide mb-2">
+                    {item.outlet} &middot; {formatDate(item.date)}
+                  </p>
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-orange-primary transition-colors">
+                    {item.title}
+                    <ExternalLink className="inline-block w-4 h-4 ml-2 align-baseline" aria-hidden="true" />
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed">{item.summary}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

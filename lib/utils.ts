@@ -36,18 +36,19 @@ export const siteConfig = {
     linkedin: 'https://www.linkedin.com/company/hoops-creating-hope/',
   },
   email: 'info@hoopscreatinghope.org',
-  founded: 2010,
+  founded: 2010, // registered as an entity, August 2010
+  firstProgram: 2012, // first on-the-ground program
 }
 
-// Single source of truth for "years of impact" so the ticker, stats and timeline never disagree
-export const yearsOfImpact = new Date().getFullYear() - siteConfig.founded
+// Years of impact are counted from the first on-the-ground program (2012). Single source of truth for "years of impact" so the ticker, stats and timeline never disagree
+export const yearsOfImpact = new Date().getFullYear() - siteConfig.firstProgram
 
 // Ticker stats — single source of truth for scrolling headline numbers
 export const tickerStats = [
   '2,500+ STUDENTS',
   '85% RETENTION',
   '60% GIRLS',
-  '3 CITIES',
+  '5 CITIES',
   `${yearsOfImpact} YEARS`,
 ]
 

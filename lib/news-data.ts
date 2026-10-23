@@ -51,6 +51,47 @@ export const newsArticles: NewsArticle[] = [
   },
 ];
 
+// Independent press coverage of Hoops Creating Hope / Crossover and Shaun Jayachandran.
+// Dates are the publication dates shown on each outlet's page. Summaries are our own words.
+export interface PressItem {
+  outlet: string;
+  title: string;
+  date: string;
+  url: string;
+  summary: string;
+}
+
+export const pressCoverage: PressItem[] = [
+  {
+    outlet: 'Tufts Daily',
+    title: 'Caring changes communities with Crossover Basketball',
+    date: '2020-12-11',
+    url: 'https://tuftsdaily.com/sports/2020/12/11/caring-changes-communities-with-crossover-basketball/',
+    summary: 'Profiles Shaun Jayachandran and the free summer camp in Chennai that has grown from 45 children to nearly 500, with a focus on staying in school and gender equity.',
+  },
+  {
+    outlet: 'India.com',
+    title: 'Hoops Creating Hope: Using Basketball To Improve Education in India',
+    date: '2015-08-25',
+    url: 'https://www.india.com/lifestyle/hoops-creating-hope-using-basketball-to-improve-education-in-india-492632/',
+    summary: 'Reports on the fourth Crossover summer camp in Chennai, which drew more than 400 students, and how the program responds to school dropout in India.',
+  },
+  {
+    outlet: 'The Better India',
+    title: 'Every Year, This Man Brings Coaches From The USA And Teaches Basketball To Local Children',
+    date: '2014-04-16',
+    url: 'https://thebetterindia.com/10005/crossover-basketball-academy-sports-development-children-underprivileged/',
+    summary: 'Tells the story behind Crossover and its yearly camp where U.S. volunteer coaches train children from different economic backgrounds side by side, at no cost.',
+  },
+  {
+    outlet: 'The Aerogram',
+    title: 'Hoops Creating Hope: Using Basketball As a Vehicle of Change in Education',
+    date: '2013-08-01',
+    url: 'https://theaerogram.com/hoops-creating-hope-using-basketball-as-a-vehicle-of-change-in-education/',
+    summary: 'An interview with Shaun Jayachandran about his coaching background and why he sees sports and academics as connected.',
+  },
+];
+
 // Helper function to get articles by category
 export function getArticlesByCategory(category: NewsArticle['category']) {
   return newsArticles.filter((article) => article.category === category);
