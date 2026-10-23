@@ -29,7 +29,13 @@ export const siteConfig = {
   name: 'Hoops Creating Hope',
   description: 'Empowering 2,500+ underserved youth in India through basketball, education, and mentorship. Join us in transforming lives from courts to careers.',
   url: 'https://hoopscreatinghope.org',
-  donateUrl: 'https://givebutter.com/2025HoopsCreatingHope',
+  // Givebutter checkout for the "Every Shot Opens a Future" campaign (one-time, monthly or quarterly;
+  // donors choose frequency at checkout). Note: live.givebutter.com/c/... is the event Live Display, not checkout.
+  donateUrl: 'https://givebutter.com/every-shot-opens-a-future',
+  // Verified via IRS data on ProPublica Nonprofit Explorer (tax exemption issued Sept. 2011).
+  legalName: 'Crossover Basketball and Scholars Academy',
+  ein: '27-3248526',
+  irsFilingsUrl: 'https://projects.propublica.org/nonprofits/organizations/273248526',
   socialLinks: {
     instagram: 'https://www.instagram.com/hoopscreatinghope/',
     facebook: 'https://www.facebook.com/CrossoverBasketball.India/',
@@ -58,6 +64,7 @@ export const navLinks = {
     { label: 'Give Hope Today', href: siteConfig.donateUrl, external: true },
     { label: 'Mentor & Coach & Create', href: '/volunteer' },
     { label: 'Start a Fundraiser', href: '/get-involved#fundraise' },
+    { label: 'Corporate Partnerships', href: '/corporate-partnerships' },
     { label: 'Partner With Us', href: '/get-involved' },
   ],
   aboutUs: [

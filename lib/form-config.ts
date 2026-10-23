@@ -7,6 +7,9 @@ export const formConfig = {
   contactFormId: process.env.NEXT_PUBLIC_FORMSPREE_CONTACT_ID || '',
   volunteerFormId: process.env.NEXT_PUBLIC_FORMSPREE_VOLUNTEER_ID || '',
   newsletterFormId: process.env.NEXT_PUBLIC_FORMSPREE_NEWSLETTER_ID || '',
+  // Corporate partnership inquiries. Falls back to the contact form's ID if a dedicated form isn't set up.
+  partnershipFormId:
+    process.env.NEXT_PUBLIC_FORMSPREE_PARTNERSHIP_ID || process.env.NEXT_PUBLIC_FORMSPREE_CONTACT_ID || '',
 }
 
 export function getFormspreeUrl(formId: string) {

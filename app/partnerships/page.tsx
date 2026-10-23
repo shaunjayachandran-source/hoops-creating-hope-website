@@ -12,9 +12,6 @@ const partners = [
   { name: 'Crossover Basketball', logo: null, tier: 'strategic' },
   { name: 'St. Patrick\'s School', logo: null, tier: 'school' },
   { name: 'Fort School Bangalore', logo: null, tier: 'school' },
-  { name: 'Community Partner 1', logo: null, tier: 'community' },
-  { name: 'Community Partner 2', logo: null, tier: 'community' },
-  { name: 'Community Partner 3', logo: null, tier: 'community' },
 ]
 
 const partnershipTypes = [
