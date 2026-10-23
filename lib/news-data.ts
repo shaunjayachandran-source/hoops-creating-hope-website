@@ -31,7 +31,7 @@ export const newsArticles: NewsArticle[] = [
   {
     id: '2500-students-milestone',
     title: 'Milestone: 2,500+ Students Impacted',
-    excerpt: 'We celebrate reaching over 2,500 students across Chennai, Bangalore, and Hyderabad with proven 85% high school completion rates.',
+    excerpt: 'We celebrate reaching over 2,500 students across Chennai, Mumbai, Delhi, Hyderabad, and Bangalore with proven 85% high school completion rates.',
     date: '2024-03-01',
     category: 'update',
   },

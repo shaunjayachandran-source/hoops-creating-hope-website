@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   openGraph: {
-    title: 'Hoops Creating Hope — Every Dribble Rewrites the Future',
+    title: 'Hoops Creating Hope — Every Dribble Opens a Door',
     description: 'Empowering 2,500+ underserved youth in India through basketball, education, and mentorship.',
     url: 'https://hoopscreatinghope.org',
     siteName: 'Hoops Creating Hope',
@@ -72,8 +72,10 @@ const jsonLd = {
   ],
   areaServed: [
     { '@type': 'City', name: 'Chennai', addressCountry: 'IN' },
-    { '@type': 'City', name: 'Bangalore', addressCountry: 'IN' },
+    { '@type': 'City', name: 'Mumbai', addressCountry: 'IN' },
+    { '@type': 'City', name: 'Delhi', addressCountry: 'IN' },
     { '@type': 'City', name: 'Hyderabad', addressCountry: 'IN' },
+    { '@type': 'City', name: 'Bangalore', addressCountry: 'IN' },
   ],
 }
 

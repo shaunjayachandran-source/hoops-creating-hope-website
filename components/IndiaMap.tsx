@@ -23,6 +23,8 @@ interface CityData {
   y: number;
   /** Which side of the marker the label sits on, so labels don't collide. */
   labelSide: 'left' | 'right';
+  /** Students served there. */
+  students: string;
   /** Year programs started there. */
   year: number;
   description: string;
@@ -35,6 +37,7 @@ const cities: CityData[] = [
     x: 254.0,
     y: 561.1,
     labelSide: 'right',
+    students: '2,000+',
     year: 2012,
     description: 'Where our first on-the-ground program began',
   },
@@ -44,6 +47,7 @@ const cities: CityData[] = [
     x: 99.8,
     y: 430.9,
     labelSide: 'left',
+    students: '100',
     year: 2019,
     description: 'Programs run alongside the NBA Games in India',
   },
@@ -53,6 +57,7 @@ const cities: CityData[] = [
     x: 190.2,
     y: 213.0,
     labelSide: 'right',
+    students: '100',
     year: 2019,
     description: 'Programs run alongside the NBA Games in India',
   },
@@ -62,6 +67,7 @@ const cities: CityData[] = [
     x: 216.7,
     y: 467.9,
     labelSide: 'right',
+    students: '150',
     year: 2022,
     description: 'A one-year program in 2022',
   },
@@ -71,6 +77,7 @@ const cities: CityData[] = [
     x: 198.1,
     y: 563.5,
     labelSide: 'left',
+    students: '105',
     year: 2024,
     description: 'Our newest chapter, opened in 2024',
   },
@@ -141,7 +148,7 @@ export default function IndiaMap() {
             onMouseLeave={() => setActiveCity(null)}
             onFocus={() => setActiveCity(city)}
             onBlur={() => setActiveCity(null)}
-            aria-label={`${city.name}: programs since ${city.year}`}
+            aria-label={`${city.name}: ${city.students} students, programs since ${city.year}`}
           >
             {/* Everything is positioned around the exact point (the button itself is zero-size) */}
             <span className="pointer-events-none">
@@ -171,7 +178,7 @@ export default function IndiaMap() {
                   {city.name}
                 </span>
                 <span className="block text-orange-primary text-xs [text-shadow:0_1px_4px_rgba(0,0,0,0.9)]">
-                  Since {city.year}
+                  {city.students} students
                 </span>
               </motion.span>
             </span>
@@ -192,7 +199,7 @@ export default function IndiaMap() {
                 </div>
                 <div>
                   <h4 className="font-bold text-white">{activeCity.name}</h4>
-                  <p className="text-xs text-gray-400">Since {activeCity.year}</p>
+                  <p className="text-xs text-gray-400">Since {activeCity.year} &middot; {activeCity.students} students</p>
                 </div>
               </div>
 

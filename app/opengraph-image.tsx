@@ -54,7 +54,7 @@ export default async function Image() {
               marginBottom: '40px',
             }}
           >
-            Every Dribble Rewrites the Future
+            Every Dribble Opens a Door
           </div>
           <div
             style={{
