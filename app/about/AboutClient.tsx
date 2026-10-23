@@ -34,19 +34,24 @@ const timeline = [
     description: 'Our first cohort of students completed high school. The data was undeniable: 85% of HCH students advanced to the next grade level compared to just 16% for similar demographics. The theory was now proven. Basketball worked.',
   },
   {
-    year: '2017',
-    title: 'Expanding Impact',
-    description: 'With proven results, HCH expanded to Bangalore. New courts. New students. Same commitment to excellence. Our coaching staff grew to include former college athletes who understood both the game and the stakes.',
+    year: '2019',
+    title: 'Mumbai & Delhi',
+    description: 'HCH ran programs in Mumbai and Delhi in conjunction with the NBA Games in India, taking the basketball-plus-study model beyond Chennai for the first time.',
   },
   {
     year: '2022',
     title: 'Hyderabad Program',
-    description: 'HCH ran a one-year program in Hyderabad, taking the same basketball-plus-study model to a third city in India.',
+    description: 'HCH ran a one-year program in Hyderabad, bringing the same basketball-plus-study model to another city in India.',
+  },
+  {
+    year: '2024',
+    title: 'Bangalore Chapter',
+    description: 'HCH opened its Bangalore chapter: new courts, new students and the same commitment to excellence.',
   },
   {
     year: '2024',
     title: '2,500+ Strong',
-    description: 'Today, Hoops Creating Hope serves 2,500+ students across three major Indian cities. Our 85% high school completion rate remains consistent. Our students don\'t just graduate—they lead. They mentor. They come back as coaches. The cycle continues.',
+    description: 'Today, Hoops Creating Hope serves 2,500+ students across India. Our 85% high school completion rate remains consistent. Our students don\'t just graduate—they lead. They mentor. They come back as coaches. The cycle continues.',
   },
 ]
 
@@ -197,7 +202,7 @@ export default function AboutClient() {
 
           <div className="space-y-12 md:space-y-0">
             {timeline.map((item, index) => (
-              <TimelineItem key={item.year} item={item} index={index} />
+              <TimelineItem key={item.title} item={item} index={index} />
             ))}
           </div>
         </div>

@@ -28,7 +28,7 @@ const stats = [
   { value: 2500, suffix: '+', label: 'Students Impacted', icon: Users },
   { value: 85, suffix: '%', label: 'High School Retention', icon: GraduationCap },
   { value: 60, suffix: '%', label: 'Girls Participation', icon: Trophy },
-  { value: 3, suffix: '', label: 'Cities in India', icon: Globe },
+  { value: 5, suffix: '', label: 'Cities in India', icon: Globe },
 ];
 
 // Programs data
@@ -314,7 +314,7 @@ export default function HomePage() {
               </p>
             </TextReveal>
             <h2 className="text-4xl md:text-6xl font-display text-white mb-6">
-              <WordReveal text="3 Cities, One Mission" delay={0.2} />
+              <WordReveal text="5 Cities, One Mission" delay={0.2} />
             </h2>
             <motion.p
               initial={{ opacity: 0 }}
@@ -350,7 +350,7 @@ export default function HomePage() {
               transition={{ delay: 0.5 }}
               className="text-gray-400 mt-4 text-lg"
             >
-              12 total programs so far across 3 cities in India
+              12 total programs so far across 5 cities in India
             </motion.p>
           </div>
 

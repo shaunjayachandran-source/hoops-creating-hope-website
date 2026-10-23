@@ -99,7 +99,7 @@ export default async function Image() {
                 padding: '16px 28px',
               }}
             >
-              <span style={{ fontSize: 42, fontWeight: 900, color: 'white' }}>3</span>
+              <span style={{ fontSize: 42, fontWeight: 900, color: 'white' }}>5</span>
               <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', textTransform: 'uppercase', letterSpacing: '2px' }}>Cities</span>
             </div>
           </div>

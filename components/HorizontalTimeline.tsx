@@ -33,14 +33,6 @@ const timelineEvents: TimelineEvent[] = [
     image: images.outdoorCourt,
   },
   {
-    year: '2015',
-    title: 'Bangalore Expansion',
-    description: 'Opened our second chapter in Bangalore, bringing programs to a new community.',
-    stat: '500+',
-    statLabel: 'Total students',
-    image: images.teamGathering,
-  },
-  {
     year: '2018',
     title: "Girls' Initiative",
     description: 'Launched dedicated programs for girls, reaching 60% female participation.',
@@ -50,8 +42,8 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: '2019',
-    title: 'NBA India Partnership',
-    description: 'Ran programs in Mumbai in conjunction with the NBA Games in India.',
+    title: 'Mumbai & Delhi',
+    description: 'Ran programs in Mumbai and Delhi in conjunction with the NBA Games in India.',
     stat: 'NBA',
     statLabel: 'Partnership',
     image: images.coachHighFive,
@@ -59,10 +51,18 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: '2022',
     title: 'Hyderabad Program',
-    description: 'Ran a one-year program in Hyderabad, bringing our model to a third major city in India.',
-    stat: '3',
+    description: 'Ran a one-year program in Hyderabad, bringing our model to another major city in India.',
+    stat: '4',
     statLabel: 'Cities across India',
     image: images.programActivity,
+  },
+  {
+    year: '2024',
+    title: 'Bangalore Chapter',
+    description: 'Opened our Bangalore chapter, bringing basketball and study support to a new community.',
+    stat: '5',
+    statLabel: 'Cities across India',
+    image: images.teamGathering,
   },
   {
     year: '2024',
@@ -149,14 +149,14 @@ export default function HorizontalTimeline() {
           className="absolute top-0 left-0 h-full flex"
         >
           {timelineEvents.map((event, index) => (
-            <TimelineCard key={event.year} event={event} index={index} progress={scrollYProgress} />
+            <TimelineCard key={event.title} event={event} index={index} progress={scrollYProgress} />
           ))}
         </motion.div>
 
         {/* Progress indicator */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-2">
           {timelineEvents.map((event, index) => (
-            <ProgressDot key={event.year} index={index} progress={scrollYProgress} />
+            <ProgressDot key={event.title} index={index} progress={scrollYProgress} />
           ))}
         </div>
 

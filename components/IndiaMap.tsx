@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { MapPin, Users, Trophy } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import india from '@svg-maps/india';
 
 // Real state outlines from MapSVG (CC BY 4.0), packaged as @svg-maps/india.
@@ -11,8 +11,9 @@ const MAP_W = 612;
 const MAP_H = 696;
 const states = (india as unknown as { locations: { id: string; name: string; path: string }[] }).locations;
 
-// States where we operate: Chennai (Tamil Nadu), Bangalore (Karnataka), Hyderabad (Telangana).
-const OPERATING_STATES = new Set(['Tamil Nadu', 'Karnataka', 'Telangana']);
+// States where we have run programs: Tamil Nadu (Chennai), Karnataka (Bangalore), Telangana (Hyderabad),
+// Maharashtra (Mumbai) and Delhi.
+const OPERATING_STATES = new Set(['Tamil Nadu', 'Karnataka', 'Telangana', 'Maharashtra', 'Delhi']);
 
 interface CityData {
   id: string;
@@ -22,8 +23,7 @@ interface CityData {
   y: number;
   /** Which side of the marker the label sits on, so labels don't collide. */
   labelSide: 'left' | 'right';
-  students: number;
-  programs: number;
+  /** Year programs started there. */
   year: number;
   description: string;
 }
@@ -35,21 +35,26 @@ const cities: CityData[] = [
     x: 254.0,
     y: 561.1,
     labelSide: 'right',
-    students: 1200,
-    programs: 4,
     year: 2012,
     description: 'Where our first on-the-ground program began',
   },
   {
-    id: 'bangalore',
-    name: 'Bangalore', // 12.97 N, 77.59 E
-    x: 198.1,
-    y: 563.5,
+    id: 'mumbai',
+    name: 'Mumbai', // 19.08 N, 72.88 E
+    x: 99.8,
+    y: 430.9,
     labelSide: 'left',
-    students: 900,
-    programs: 3,
-    year: 2015,
-    description: 'Tech hub with growing basketball culture',
+    year: 2019,
+    description: 'Programs run alongside the NBA Games in India',
+  },
+  {
+    id: 'delhi',
+    name: 'Delhi', // 28.61 N, 77.21 E
+    x: 190.2,
+    y: 213.0,
+    labelSide: 'right',
+    year: 2019,
+    description: 'Programs run alongside the NBA Games in India',
   },
   {
     id: 'hyderabad',
@@ -57,10 +62,17 @@ const cities: CityData[] = [
     x: 216.7,
     y: 467.9,
     labelSide: 'right',
-    students: 400,
-    programs: 2,
     year: 2022,
     description: 'A one-year program in 2022',
+  },
+  {
+    id: 'bangalore',
+    name: 'Bangalore', // 12.97 N, 77.59 E
+    x: 198.1,
+    y: 563.5,
+    labelSide: 'left',
+    year: 2024,
+    description: 'Our newest chapter, opened in 2024',
   },
 ];
 
@@ -79,7 +91,7 @@ export default function IndiaMap() {
           viewBox={`0 0 ${MAP_W} ${MAP_H}`}
           className="absolute inset-0 w-full h-full"
           role="img"
-          aria-label="Map of India highlighting Tamil Nadu, Karnataka and Telangana, where Hoops Creating Hope runs programs in Chennai, Bangalore and Hyderabad"
+          aria-label="Map of India marking the cities where Hoops Creating Hope has run programs: Chennai, Mumbai, Delhi, Hyderabad and Bangalore"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8 }}
@@ -112,35 +124,6 @@ export default function IndiaMap() {
             );
           })}
 
-          {/* Connection lines between cities */}
-          {isInView && (
-            <>
-              <motion.line
-                x1={cities[0].x}
-                y1={cities[0].y}
-                x2={cities[1].x}
-                y2={cities[1].y}
-                stroke="rgba(255, 255, 255, 0.6)"
-                strokeWidth="1.2"
-                strokeDasharray="4 4"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 1, delay: 1 }}
-              />
-              <motion.line
-                x1={cities[1].x}
-                y1={cities[1].y}
-                x2={cities[2].x}
-                y2={cities[2].y}
-                stroke="rgba(255, 255, 255, 0.6)"
-                strokeWidth="1.2"
-                strokeDasharray="4 4"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 1, delay: 1.3 }}
-              />
-            </>
-          )}
         </motion.svg>
 
         {/* City markers */}
@@ -158,7 +141,7 @@ export default function IndiaMap() {
             onMouseLeave={() => setActiveCity(null)}
             onFocus={() => setActiveCity(city)}
             onBlur={() => setActiveCity(null)}
-            aria-label={`${city.name}: ${city.students}+ students`}
+            aria-label={`${city.name}: programs since ${city.year}`}
           >
             {/* Everything is positioned around the exact point (the button itself is zero-size) */}
             <span className="pointer-events-none">
@@ -188,7 +171,7 @@ export default function IndiaMap() {
                   {city.name}
                 </span>
                 <span className="block text-orange-primary text-xs [text-shadow:0_1px_4px_rgba(0,0,0,0.9)]">
-                  {city.students}+ students
+                  Since {city.year}
                 </span>
               </motion.span>
             </span>
@@ -213,18 +196,8 @@ export default function IndiaMap() {
                 </div>
               </div>
 
-              <p className="text-sm text-gray-300 mb-4">{activeCity.description}</p>
+              <p className="text-sm text-gray-300">{activeCity.description}</p>
 
-              <div className="grid grid-cols-2 gap-3">
-                <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-orange-primary" />
-                  <span className="text-sm text-white">{activeCity.students}+ students</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Trophy className="w-4 h-4 text-orange-primary" />
-                  <span className="text-sm text-white">{activeCity.programs} programs</span>
-                </div>
-              </div>
             </motion.div>
           </div>
         )}
@@ -238,7 +211,7 @@ export default function IndiaMap() {
         className="mt-8 grid grid-cols-3 gap-4 text-center"
       >
         <div>
-          <div className="text-3xl font-display gradient-text">3</div>
+          <div className="text-3xl font-display gradient-text">5</div>
           <div className="text-sm text-gray-400">Cities</div>
         </div>
         <div>

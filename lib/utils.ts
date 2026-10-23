@@ -48,7 +48,7 @@ export const tickerStats = [
   '2,500+ STUDENTS',
   '85% RETENTION',
   '60% GIRLS',
-  '3 CITIES',
+  '5 CITIES',
   `${yearsOfImpact} YEARS`,
 ]
 
