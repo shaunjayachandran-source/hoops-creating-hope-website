@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/volunteer',
     '/fundraise',
     '/partnerships',
+    '/corporate-partnerships',
     '/news',
     '/get-involved',
     '/contact',

@@ -18,6 +18,8 @@ const footerLinks = {
     { label: 'Courts to Careers', href: '/programs' },
     { label: 'Scholars Program', href: '/programs' },
     { label: 'Volunteer', href: '/volunteer' },
+    { label: 'Fundraise', href: '/fundraise' },
+    { label: 'Corporate Partnerships', href: '/corporate-partnerships' },
   ],
   impact: [
     { label: 'Stories', href: '/stories' },
@@ -117,7 +119,7 @@ export function Footer() {
             </Link>
             <p className="text-white/60 max-w-sm mb-6 leading-relaxed">
               Empowering underserved youth in India through basketball, education, and mentorship.
-              Every dribble rewrites the future.
+              Every dribble opens a door.
             </p>
 
             {/* Social Links */}

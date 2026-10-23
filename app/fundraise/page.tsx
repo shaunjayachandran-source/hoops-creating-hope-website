@@ -1,370 +1,318 @@
-'use client'
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import { images, siteConfig } from '@/lib/utils';
+import TrackedLink from '@/components/give/TrackedLink';
+import { btnOnDark, btnPrimary, btnSecondary, eyebrow, textLink } from '@/components/give/styles';
 
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { Heart, Building2, Users, Trophy, Sparkles, Mail, ExternalLink, CheckCircle } from 'lucide-react'
-import { images, siteConfig } from '@/lib/utils'
+export const metadata: Metadata = {
+  title: 'Fundraising',
+  description:
+    'Support Hoops Creating Hope through basketball, learning, and mentorship for young people in underserved communities in India.',
+  alternates: { canonical: '/fundraise' },
+  openGraph: {
+    title: 'Fundraising | Hoops Creating Hope',
+    description:
+      'Support Hoops Creating Hope through basketball, learning, and mentorship for young people in underserved communities in India.',
+  },
+};
 
-const sponsorshipLevels = [
-  {
-    title: 'School Champion',
-    amount: '$25,000',
-    description: 'Full-year program for entire school',
-    icon: Building2,
-    color: 'from-orange-primary to-orange-light',
-    featured: true,
-  },
-  {
-    title: 'Team Builder',
-    amount: '$10,000',
-    description: 'Equip and support one team for a year',
-    icon: Users,
-    color: 'from-purple-accent to-pink-500',
-    featured: false,
-  },
-  {
-    title: 'Court Creator',
-    amount: '$5,000',
-    description: 'Build/renovate basketball facilities',
-    icon: Trophy,
-    color: 'from-orange-light to-purple-accent',
-    featured: false,
-  },
-  {
-    title: 'Custom Partnership',
-    amount: 'Contact Us',
-    description: "Let's design something unique",
-    icon: Sparkles,
-    color: 'from-pink-500 to-orange-primary',
-    featured: false,
-  },
-]
+// Same figures used on the homepage and impact page. See the review notes in the PR before changing.
+const metrics = [
+  { value: '2,500+', label: 'Young people reached since 2012' },
+  { value: '60%', label: 'Girls participating (approximate)' },
+  { value: '85%', label: 'High School Completion Rate' },
+  { value: String(siteConfig.firstProgram), label: 'Programs began' },
+];
 
-const sponsorshipIncludes = [
-  'Brand recognition on jerseys and court signage',
-  'Naming opportunities for programs or facilities',
-  'Detailed impact reporting with photos and videos',
-  'Site visits to see your investment in action',
-  'Direct communication with program leaders',
-  'Tax-deductible contribution (501c3)',
-]
+// The amounts offered on the Givebutter checkout itself (verified on the live campaign).
+// Shown for reference only: donors pick their amount, or enter their own, at checkout.
+const checkoutAmounts = ['$25', '$55', '$100', '$250', '$500', '$1,000'];
 
-const individualOptions = [
-  {
-    amount: '$50',
-    impact: 'Sponsors a student for one month',
-  },
-  {
-    amount: '$500',
-    impact: 'Sponsors a student for a full year',
-  },
-  {
-    amount: '$1,000',
-    impact: 'Provides equipment for an entire team',
-  },
-  {
-    amount: '$2,500',
-    impact: 'Funds a scholarship for a graduating student',
-  },
-]
+const sectionHeading = 'font-display text-5xl text-brand-blue [text-wrap:balance] md:text-6xl';
+const rule = <span className="mt-4 block h-1 w-12 bg-brand-yellow" aria-hidden="true" />;
 
 export default function FundraisePage() {
   return (
-    <>
-      {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-primary via-orange-light to-purple-accent" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(255,255,255,0.1),transparent_50%)]" />
-
-        <div className="relative z-10 text-center max-w-5xl mx-auto px-6 py-20">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="inline-block px-5 py-2 rounded-full bg-black/20 backdrop-blur-sm text-sm font-bold tracking-wide mb-8"
-          >
-            INVEST IN FUTURES
-          </motion.span>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="font-display text-6xl sm:text-7xl md:text-8xl leading-none mb-8"
-          >
-            Fund the Future
-            <br />
-            of 2,500+ Students
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="text-xl md:text-2xl font-semibold max-w-3xl mx-auto mb-10"
-          >
-            Your donation keeps students in school, on the court, and on track for success.
-          </motion.p>
-
-          <motion.a
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
-            href={siteConfig.donateUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-10 py-5 bg-black text-white font-bold text-lg rounded-2xl hover:bg-dark-200 transition-colors"
-          >
-            <Heart className="w-6 h-6" />
-            Donate Now
-          </motion.a>
-        </div>
-      </section>
-
-      {/* Sponsor a School or Team */}
-      <section className="bg-black py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-orange-primary font-mono text-sm tracking-widest uppercase mb-4 block">
-              CORPORATE SPONSORSHIP
-            </span>
-            <h2 className="section-title mb-6">Sponsor a School or Team</h2>
-            <p className="text-xl text-white/60 max-w-3xl mx-auto">
-              Corporate sponsors and major donors can transform entire communities by funding a full school program, team, or facility. Your investment creates systemic change—bringing basketball, tutoring, mentorship, and hope to hundreds of students.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {sponsorshipLevels.map((level, index) => (
-              <motion.div
-                key={level.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className={`glass rounded-3xl p-8 text-center card-glow ${
-                  level.featured ? 'border-2 border-orange-primary' : ''
-                }`}
-              >
-                {level.featured && (
-                  <span className="inline-block px-3 py-1 bg-orange-primary text-black text-xs font-bold rounded-full mb-4">
-                    MOST IMPACT
-                  </span>
-                )}
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${level.color} flex items-center justify-center mx-auto mb-6`}>
-                  <level.icon className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-black mb-2">{level.title}</h3>
-                <div className="font-display text-4xl gradient-text mb-4">{level.amount}</div>
-                <p className="text-white/60">{level.description}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Sponsorship Includes */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="glass rounded-3xl p-8 md:p-12"
-          >
-            <h3 className="text-2xl font-bold text-orange-primary text-center mb-8">
-              Sponsorship Includes:
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {sponsorshipIncludes.map((item, index) => (
-                <div key={index} className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-orange-primary flex-shrink-0" />
-                  <span className="text-white/70">{item}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="text-center mt-10">
-              <a
-                href={`mailto:${siteConfig.email}?subject=Corporate%20Sponsorship%20Inquiry`}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-orange-primary hover:bg-orange-hover text-white font-bold rounded-2xl transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-                Contact Us About Sponsorship
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Individual Giving */}
-      <section className="section-dark py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-orange-primary font-mono text-sm tracking-widest uppercase mb-4 block">
-              INDIVIDUAL GIVING
-            </span>
-            <h2 className="section-title mb-6">Every Dollar Counts</h2>
-            <p className="text-xl text-white/60 max-w-3xl mx-auto">
-              No matter the amount, your contribution directly impacts students&apos; lives.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {individualOptions.map((option, index) => (
-              <motion.div
-                key={option.amount}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="glass rounded-2xl p-6 text-center hover:border-orange-primary/30 border border-white/10 transition-colors"
-              >
-                <div className="font-display text-4xl gradient-text mb-2">{option.amount}</div>
-                <p className="text-white/60 text-sm">{option.impact}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <motion.a
-              href={siteConfig.donateUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-3 px-10 py-5 bg-orange-primary hover:bg-orange-hover text-white font-bold text-lg rounded-2xl transition-colors"
-            >
-              <Heart className="w-6 h-6" />
-              Make a Donation
-            </motion.a>
-          </div>
-        </div>
-      </section>
-
-      {/* Start a Fundraiser */}
-      <section className="bg-black py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <span className="text-orange-primary font-mono text-sm tracking-widest uppercase mb-4 block">
-                COMMUNITY FUNDRAISING
-              </span>
-              <h2 className="font-display text-4xl md:text-5xl gradient-text mb-6">
-                Start a Fundraiser
-              </h2>
-              <p className="text-xl text-white/70 leading-relaxed mb-8">
-                Rally your community, workplace, or school to support Hoops Creating Hope. Whether it&apos;s a birthday fundraiser, corporate giving campaign, or community event—every effort helps us reach more students.
+    <div className="bg-brand-cream text-gray-800">
+      {/* 1. HERO */}
+      <section aria-labelledby="give-hero-heading" className="relative isolate overflow-hidden bg-black">
+        <Image
+          src={images.hero}
+          alt="A girl in a Hoops Creating Hope jersey drives toward the basket while teammates practice behind her."
+          fill
+          priority
+          sizes="100vw"
+          className="-z-10 object-cover object-[60%_30%]"
+        />
+        {/* Scrim on the text side keeps copy readable; the photo stays visible on the right */}
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/85 via-black/60 to-black/10" aria-hidden="true" />
+        <div className="mx-auto max-w-6xl px-6 pb-20 pt-36 md:pb-28 md:pt-44">
+          <div className="max-w-2xl">
+            <p className={`${eyebrow} text-brand-yellow`}>GIVE TO HOOPS CREATING HOPE</p>
+            <h1 id="give-hero-heading" className="mt-4 font-display text-5xl leading-[0.95] text-white [text-wrap:balance] md:text-7xl">
+              Help change the game. Help change a future.
+            </h1>
+            <div className="mt-6 space-y-4 text-lg text-white/90 md:text-xl">
+              <p>
+                Hoops Creating Hope uses basketball, academic support, and mentorship to help young people in
+                underserved communities in India stay in school, build confidence, and discover their potential.
               </p>
-
-              <ul className="space-y-4 mb-8">
-                {[
-                  'Birthday or celebration fundraisers',
-                  'Corporate matching gift programs',
-                  'School or team fundraising events',
-                  'Social media campaigns',
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <Heart className="w-5 h-5 text-orange-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-white/70">{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href={`mailto:${siteConfig.email}?subject=Start%20a%20Fundraiser`}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-2xl transition-colors border border-white/20"
-              >
-                <Mail className="w-5 h-5" />
-                Get Started
-              </a>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="aspect-square rounded-3xl overflow-hidden">
-                <img
-                  src={images.teamGathering}
-                  alt="Community Fundraising"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-orange-primary to-purple-accent rounded-2xl -z-10" />
-            </motion.div>
+              <p>
+                Your generosity helps create opportunities that reach beyond the court and into the classroom, the
+                family, and the community.
+              </p>
+            </div>
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <TrackedLink href={siteConfig.donateUrl} external event="donate_click" location="hero" className={btnPrimary}>
+                Donate to Hoops Creating Hope
+              </TrackedLink>
+              <TrackedLink href="/impact" event="impact_nav" location="hero" className={btnOnDark}>
+                Explore Our Impact
+              </TrackedLink>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Impact Stats */}
-      <section className="section-dark py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="section-title mb-6">Your Impact</h2>
-            <p className="text-xl text-white/60">
-              See how donations translate to real-world change
+      {/* 2. THE CASE FOR GIVING */}
+      <section aria-labelledby="case-heading" className="px-6 py-20 md:py-28">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2 md:gap-16">
+          <div>
+            <h2 id="case-heading" className={sectionHeading}>
+              Every young person deserves the opportunity to thrive.
+            </h2>
+            {rule}
+            <div className="mt-6 space-y-5 text-lg leading-relaxed">
+              <p>
+                For young people facing barriers to educational opportunity, consistent support, positive role models,
+                and a place to belong can make a meaningful difference.
+              </p>
+              <p>
+                Since 2010, Hoops Creating Hope has worked to bring basketball, learning, and mentorship together to
+                help young people build the skills and confidence to shape their futures.
+              </p>
+              <p>
+                Your support helps sustain this work and expand opportunities for the young people and communities we
+                serve.
+              </p>
+            </div>
+          </div>
+          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-gray-200 md:order-first">
+            <Image
+              src={images.portrait}
+              alt="Two smiling girls in Hoops Creating Hope shirts hold basketballs on a school court."
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover object-[45%_50%]"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* 3. IMPACT */}
+      <section aria-labelledby="impact-heading" className="bg-white px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-3xl">
+            <h2 id="impact-heading" className={sectionHeading}>
+              A lasting impact, on and off the court.
+            </h2>
+            {rule}
+            <p className="mt-6 text-lg leading-relaxed">
+              Our work brings basketball, learning, and mentorship together to create opportunities for young people
+              to grow.
             </p>
           </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { number: '2,500+', label: 'Students Impacted' },
-              { number: '85%', label: 'High School Completion' },
-              { number: '5.3x', label: 'Better Outcomes' },
-              { number: '12+', label: 'Programs Running' },
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="font-display text-4xl md:text-5xl gradient-text mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-white/60 text-sm">{stat.label}</div>
-              </motion.div>
+          <dl className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 border-y border-gray-200 py-10 lg:grid-cols-4">
+            {metrics.map((m) => (
+              <div key={m.label} className="flex flex-col-reverse">
+                <dt className="mt-2 text-base font-semibold text-gray-700">{m.label}</dt>
+                <dd className="font-display text-5xl text-brand-blue sm:text-6xl">{m.value}</dd>
+              </div>
             ))}
-          </div>
+          </dl>
+          <p className="mt-4 text-sm text-gray-600">
+            Figures as reported by Hoops Creating Hope. Participation is cumulative since programs began in 2012.
+          </p>
+          <TrackedLink href="/impact" event="impact_nav" location="impact_section" className={`${btnSecondary} mt-8`}>
+            See Our Impact
+          </TrackedLink>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-orange py-24 text-center">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl text-black mb-6">
-            Ready to Make a Difference?
-          </h2>
-          <p className="text-xl text-black/80 font-semibold mb-10">
-            Every donation is tax-deductible. Hoops Creating Hope is a registered 501(c)(3) nonprofit.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <motion.a
-              href={siteConfig.donateUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-10 py-5 bg-black text-white font-bold text-lg rounded-2xl inline-flex items-center gap-2"
-            >
-              <Heart className="w-6 h-6" />
-              Donate Now
-            </motion.a>
-            <Link
-              href="/volunteer"
-              className="px-10 py-5 bg-transparent border-3 border-black text-black font-bold text-lg rounded-2xl hover:bg-black hover:text-white transition-colors"
-            >
-              Volunteer Instead
-            </Link>
+      {/* 4. WHAT A GIFT SUPPORTS */}
+      <section aria-labelledby="supports-heading" className="px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-3xl">
+            <h2 id="supports-heading" className={sectionHeading}>
+              Your generosity puts opportunity into action.
+            </h2>
+            {rule}
+            <p className="mt-6 text-lg leading-relaxed">
+              Gifts support the work that makes our programs possible, from basketball coaching and learning
+              opportunities to mentorship and the resources that help young people participate.
+            </p>
           </div>
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            <div className="rounded-2xl border-2 border-brand-blue bg-white p-8 md:p-10">
+              <p className={`${eyebrow} text-brand-blue`}>One-time giving</p>
+              <h3 className="mt-3 font-display text-4xl text-gray-900">Make a difference today.</h3>
+              <p className="mt-4 text-lg leading-relaxed">
+                Make a contribution to support Hoops Creating Hope&apos;s work with young people and communities.
+              </p>
+              <TrackedLink href={siteConfig.donateUrl} external event="donate_click" location="one_time" className={`${btnPrimary} mt-8`}>
+                Make a One-Time Gift
+              </TrackedLink>
+            </div>
+            <div className="rounded-2xl bg-brand-blue p-8 text-white md:p-10">
+              <p className={`${eyebrow} text-brand-yellow`}>Monthly giving</p>
+              <h3 className="mt-3 font-display text-4xl">Be part of their journey.</h3>
+              <p className="mt-4 text-lg leading-relaxed text-white/90">
+                Ongoing support helps Hoops Creating Hope plan, sustain, and develop its programs over time.
+              </p>
+              <TrackedLink href={siteConfig.donateUrl} external event="monthly_click" location="monthly" className={`${btnPrimary} mt-8`}>
+                Become a Monthly Supporter
+              </TrackedLink>
+              <p className="mt-4 text-sm text-white/80">On the secure checkout, select “Monthly” before choosing your amount.</p>
+            </div>
+          </div>
+          <p className="mt-6 text-gray-700">
+            All gifts are processed securely by Givebutter, where you can choose a one-time, monthly, or quarterly gift.
+          </p>
         </div>
       </section>
-    </>
-  )
+
+      {/* 5. SUGGESTED GIFT AMOUNTS */}
+      <section aria-labelledby="amounts-heading" className="bg-white px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 id="amounts-heading" className={sectionHeading}>
+            Every gift helps move the work forward.
+          </h2>
+          <span className="mx-auto mt-4 block h-1 w-12 bg-brand-yellow" aria-hidden="true" />
+          <p className="mt-6 text-lg leading-relaxed">
+            Choose the contribution that feels right for you. Your support helps provide the resources that make
+            HCH&apos;s programs possible.
+          </p>
+          <p id="amounts-note" className="mt-10 text-sm font-semibold uppercase tracking-widest text-gray-600">
+            Amounts offered at checkout
+          </p>
+          <ul aria-labelledby="amounts-note" className="mt-4 flex flex-wrap justify-center gap-3">
+            {checkoutAmounts.map((a) => (
+              <li key={a} className="min-w-[6rem] rounded-full border-2 border-gray-300 px-5 py-2 font-display text-3xl text-gray-900">
+                {a}
+              </li>
+            ))}
+            <li className="rounded-full border-2 border-dashed border-gray-400 px-5 py-2 font-display text-3xl text-gray-700">
+              Other amount
+            </li>
+          </ul>
+          <TrackedLink href={siteConfig.donateUrl} external event="donate_click" location="amounts" className={`${btnPrimary} mt-10`}>
+            Choose Your Gift
+          </TrackedLink>
+        </div>
+      </section>
+
+      {/* 6. MORE WAYS TO HELP */}
+      <section aria-labelledby="more-heading" className="px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-3xl">
+            <h2 id="more-heading" className={sectionHeading}>
+              Be part of the movement.
+            </h2>
+            {rule}
+            <p className="mt-6 text-lg leading-relaxed">
+              There are many ways to support Hoops Creating Hope and help create opportunities for young people.
+            </p>
+          </div>
+          <ul className="mt-12 grid gap-10 border-t border-gray-300 pt-10 md:grid-cols-3 md:gap-8">
+            <li>
+              <h3 className="text-2xl font-bold text-gray-900">Corporate partnerships</h3>
+              <p className="mt-3 leading-relaxed text-gray-700">
+                Partner with Hoops Creating Hope to support educational opportunity, youth development, and
+                community-based sports programs.
+              </p>
+              <TrackedLink href="/corporate-partnerships" event="corporate_nav" location="more_ways" className={`${textLink} mt-4 inline-block`}>
+                Explore Corporate Partnerships
+              </TrackedLink>
+            </li>
+            <li>
+              <h3 className="text-2xl font-bold text-gray-900">Community fundraising</h3>
+              <p className="mt-3 leading-relaxed text-gray-700">
+                Bring your school, team, workplace, or community together around a shared purpose.
+              </p>
+              <TrackedLink href="/get-involved#fundraise" event="community_fundraising_nav" location="more_ways" className={`${textLink} mt-4 inline-block`}>
+                Explore Community Fundraising
+              </TrackedLink>
+            </li>
+            <li>
+              <h3 className="text-2xl font-bold text-gray-900">Volunteer and advocate</h3>
+              <p className="mt-3 leading-relaxed text-gray-700">
+                Share your time, expertise, and network to help Hoops Creating Hope grow its impact.
+              </p>
+              <TrackedLink href="/volunteer" event="volunteer_nav" location="more_ways" className={`${textLink} mt-4 inline-block`}>
+                Get Involved
+              </TrackedLink>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      {/* 7. TRUST AND ACCOUNTABILITY */}
+      <section aria-labelledby="trust-heading" className="bg-white px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-3xl">
+          <h2 id="trust-heading" className={sectionHeading}>
+            Your trust matters.
+          </h2>
+          {rule}
+          <div className="mt-6 space-y-5 text-lg leading-relaxed">
+            <p>
+              We believe supporters deserve to understand the work they make possible. Hoops Creating Hope is committed
+              to responsible stewardship, meaningful relationships with the communities we serve, and sharing what we
+              learn along the way.
+            </p>
+            <p>
+              Explore our programs, read our impact reporting, and learn more about the people and partners behind this
+              work.
+            </p>
+          </div>
+          <ul className="mt-8 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+            <li><TrackedLink href="/impact" event="impact_nav" location="trust" className={textLink}>Our Impact</TrackedLink></li>
+            <li><a href="/about" className={textLink}>Our Story</a></li>
+            <li><a href="/programs" className={textLink}>Programs</a></li>
+            <li><a href="/contact" className={textLink}>Contact Us</a></li>
+            <li className="sm:col-span-2">
+              <a href={siteConfig.irsFilingsUrl} target="_blank" rel="noopener noreferrer" className={textLink}>
+                Public IRS filings (Form 990)<span className="sr-only"> on ProPublica (opens in a new tab)</span>
+              </a>
+            </li>
+          </ul>
+          <p className="mt-10 border-t border-gray-200 pt-6 text-gray-700">
+            Hoops Creating Hope is the operating name of {siteConfig.legalName}, a 501(c)(3) nonprofit organization
+            (EIN {siteConfig.ein}). Contributions are tax-deductible to the extent allowed by law.
+          </p>
+        </div>
+      </section>
+
+      {/* 8. FINAL CTA */}
+      <section aria-labelledby="final-heading" className="bg-brand-blue px-6 py-20 text-center text-white md:py-28">
+        <div className="mx-auto max-w-3xl">
+          <h2 id="final-heading" className="font-display text-5xl [text-wrap:balance] md:text-7xl">
+            Help open the next door.
+          </h2>
+          <div className="mt-6 space-y-4 text-lg leading-relaxed text-white/90 md:text-xl">
+            <p>
+              Every contribution helps Hoops Creating Hope continue its work with young people through basketball,
+              learning, and mentorship.
+            </p>
+            <p>
+              Thank you for believing in what young people can achieve when they have the opportunity and support to
+              thrive.
+            </p>
+          </div>
+          <TrackedLink href={siteConfig.donateUrl} external event="donate_click" location="final" className={`${btnPrimary} mt-10`}>
+            Give to Hoops Creating Hope
+          </TrackedLink>
+        </div>
+      </section>
+    </div>
+  );
 }

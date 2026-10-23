@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Calendar, Clock, ArrowRight, Tag, User, ExternalLink } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { cn, siteConfig } from '@/lib/utils'
 import { blogPosts, type BlogPost } from '@/lib/data/blog-posts'
 import { pressCoverage } from '@/lib/news-data'
 
@@ -326,7 +326,7 @@ export default function NewsClient() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.a
-              href="https://givebutter.com/2025HoopsCreatingHope"
+              href={siteConfig.donateUrl}
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}

@@ -29,6 +29,7 @@ const config: Config = {
         brand: {
           blue: '#2E5C9E',
           yellow: '#FCBA03',
+          cream: '#FAF7F2',
         },
         dark: {
           DEFAULT: '#000000',
