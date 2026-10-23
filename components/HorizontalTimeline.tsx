@@ -58,8 +58,8 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: '2022',
-    title: 'Hyderabad Expansion',
-    description: 'Expanded to Hyderabad, our third major city in India.',
+    title: 'Hyderabad Program',
+    description: 'Ran a one-year program in Hyderabad, bringing our model to a third major city in India.',
     stat: '3',
     statLabel: 'Cities across India',
     image: images.programActivity,

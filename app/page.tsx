@@ -105,7 +105,7 @@ export default function HomePage() {
           >
             <span className="inline-flex items-center gap-2 glass-dark px-6 py-3 rounded-full text-sm font-bold tracking-wider uppercase border border-white/10">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              Changing Lives Since 2010
+              Changing Lives Since 2012
             </span>
           </motion.div>
 

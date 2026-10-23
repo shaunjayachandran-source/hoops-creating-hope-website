@@ -39,9 +39,9 @@ const timeline = [
     description: 'With proven results, HCH expanded to Bangalore. New courts. New students. Same commitment to excellence. Our coaching staff grew to include former college athletes who understood both the game and the stakes.',
   },
   {
-    year: '2020',
-    title: 'Hyderabad & Beyond',
-    description: 'Even through a global pandemic, HCH launched programs in Hyderabad and reached our 1,500th student. We adapted with outdoor practices and remote study sessions. The mission never stopped.',
+    year: '2022',
+    title: 'Hyderabad Program',
+    description: 'HCH ran a one-year program in Hyderabad, taking the same basketball-plus-study model to a third city in India.',
   },
   {
     year: '2024',

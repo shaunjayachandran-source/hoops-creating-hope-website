@@ -37,8 +37,8 @@ const cities: CityData[] = [
     labelSide: 'right',
     students: 1200,
     programs: 4,
-    year: 2010,
-    description: 'Our founding city where it all began',
+    year: 2012,
+    description: 'Where our first on-the-ground program began',
   },
   {
     id: 'bangalore',
@@ -59,8 +59,8 @@ const cities: CityData[] = [
     labelSide: 'right',
     students: 400,
     programs: 2,
-    year: 2020,
-    description: 'Our newest chapter with rapid growth',
+    year: 2022,
+    description: 'A one-year program in 2022',
   },
 ];
 

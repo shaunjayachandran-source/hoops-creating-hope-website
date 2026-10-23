@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Linkedin, X, ExternalLink, Award, MapPin, Briefcase } from 'lucide-react';
-import { siteConfig } from '@/lib/utils';
+import { siteConfig, yearsOfImpact } from '@/lib/utils';
 
 interface TeamMember {
   id: string;
@@ -24,7 +24,7 @@ const executiveLeadership: TeamMember[] = [
     name: 'Shaun Jayachandran',
     title: 'Founder & Executive Director',
     photo: '/images/team/shaun-jayachandran.jpg',
-    bio: 'Shaun founded Hoops Creating Hope in 2012 with a simple theory: basketball could keep kids in school. Today, that theory is proven with 85% of our students completing high school—5.3x the national rate for their demographic. A 2x TEDx speaker and elite basketball coach, Shaun brings a legendary coaching lineage (John Wooden → Lefty Driesell → Morgan Wootten) to youth development in India. He combines 20+ years of coaching excellence with educational leadership expertise to create transformative programs.',
+    bio: 'Shaun founded Hoops Creating Hope in 2010 and launched its first on-the-ground program in 2012 with a simple theory: basketball could keep kids in school. Today, that theory is proven with 85% of our students completing high school—5.3x the national rate for their demographic. A 2x TEDx speaker and elite basketball coach, Shaun brings a legendary coaching lineage (John Wooden → Lefty Driesell → Morgan Wootten) to youth development in India. He combines 20+ years of coaching excellence with educational leadership expertise to create transformative programs.',
     linkedin: 'https://www.linkedin.com/in/shaunjayachandran',
     credentials: [
       'M.Ed. Educational Leadership',
@@ -586,7 +586,7 @@ export default function TeamClient() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { number: '20+', label: 'Board Members' },
-              { number: '12+', label: 'Years of Service' },
+              { number: `${yearsOfImpact}+`, label: 'Years of Service' },
               { number: '5', label: 'Industry Sectors' },
               { number: '3', label: 'Continents Represented' }
             ].map((stat, index) => (
