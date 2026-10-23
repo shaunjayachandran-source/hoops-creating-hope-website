@@ -117,7 +117,7 @@ export default function HorizontalTimeline() {
         <div className="absolute inset-0 bg-gradient-to-br from-dark via-dark-100 to-dark-200" />
 
         {/* Section header */}
-        <div className="absolute top-24 left-0 right-0 text-center z-10 px-6">
+        <div className="absolute top-24 [@media(max-height:700px)]:top-[5.75rem] left-0 right-0 text-center z-10 px-6">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -129,7 +129,7 @@ export default function HorizontalTimeline() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-display text-white"
+            className="text-4xl [@media(max-height:700px)]:text-3xl md:text-6xl font-display text-white"
           >
             {yearsOfImpact} Years of Impact
           </motion.h2>
@@ -154,7 +154,7 @@ export default function HorizontalTimeline() {
         </motion.div>
 
         {/* Progress indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-2">
+        <div className="absolute bottom-10 [@media(max-height:700px)]:bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
           {timelineEvents.map((event, index) => (
             <ProgressDot key={event.title} index={index} progress={scrollYProgress} />
           ))}
@@ -165,7 +165,7 @@ export default function HorizontalTimeline() {
           initial={{ opacity: 1 }}
           animate={{ opacity: [1, 0.5, 1] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-20 left-1/2 -translate-x-1/2 text-gray-500 text-sm"
+          className="absolute bottom-20 left-1/2 -translate-x-1/2 text-gray-500 text-sm [@media(max-height:700px)]:hidden md:block"
         >
           Scroll to explore →
         </motion.div>
@@ -207,7 +207,7 @@ function TimelineCard({
   return (
     <div
       ref={ref}
-      className="w-screen h-full flex-shrink-0 flex items-center justify-center px-6 md:px-20 pt-44 pb-28 md:py-40"
+      className="w-screen h-full flex-shrink-0 flex items-center justify-center px-6 md:px-20 pt-44 pb-28 [@media(max-height:700px)]:pt-36 [@media(max-height:700px)]:pb-20 md:py-40"
     >
       <motion.div
         style={{ scale, opacity }}
@@ -222,7 +222,7 @@ function TimelineCard({
               animate={isInView ? { scale: 1 } : {}}
               className="inline-block mb-2 md:mb-4"
             >
-              <span className="text-5xl md:text-8xl font-display gradient-text">
+              <span className="text-5xl [@media(max-height:700px)]:text-4xl md:text-8xl font-display gradient-text">
                 {event.year}
               </span>
             </motion.div>
@@ -240,7 +240,7 @@ function TimelineCard({
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2 }}
-              className="text-gray-400 text-base md:text-lg leading-relaxed mb-4 md:mb-6"
+              className="text-gray-400 text-base [@media(max-height:700px)]:text-sm md:text-lg leading-relaxed mb-4 [@media(max-height:700px)]:mb-3 md:mb-6"
             >
               {event.description}
             </motion.p>
@@ -263,7 +263,7 @@ function TimelineCard({
             initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className={`relative aspect-[16/9] md:aspect-[4/3] rounded-3xl overflow-hidden ${
+            className={`relative aspect-[16/9] [@media(max-height:700px)]:aspect-[21/9] md:aspect-[4/3] rounded-3xl overflow-hidden ${
               index % 2 === 0 ? 'order-2' : 'order-2 md:order-1'
             }`}
           >
