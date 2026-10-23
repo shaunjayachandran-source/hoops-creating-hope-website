@@ -16,6 +16,7 @@ import VideoHero from '@/components/VideoHero';
 import ImpactSlider, { ImpactComparison } from '@/components/ImpactSlider';
 import { RevealWrapper, ParallaxImage, ZoomImage } from '@/components/ImageReveal';
 import { PinkOverlayLayer } from '@/components/PinkOverlay';
+import PlayLearnLead from '@/components/PlayLearnLead';
 
 // Lazy load below-fold heavy components
 const HorizontalTimeline = dynamic(() => import('@/components/HorizontalTimeline'));
@@ -206,6 +207,9 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* OUR APPROACH: Play / Learn / Lead. Connects the hero's promise to the evidence that follows */}
+      <PlayLearnLead />
 
       {/* IMPACT SLIDER - Before/After Comparison */}
       <section className="py-16 md:py-24 px-6 bg-dark relative overflow-hidden">

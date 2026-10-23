@@ -26,6 +26,10 @@ const config: Config = {
         purple: {
           accent: '#C8288C',
         },
+        brand: {
+          blue: '#2E5C9E',
+          yellow: '#FCBA03',
+        },
         dark: {
           DEFAULT: '#000000',
           100: '#0a0a0a',
