@@ -38,7 +38,7 @@ const faqs = [
   {
     question: 'Can I visit your programs in India?',
     answer:
-      'Absolutely. We love hosting visitors at our courts in Chennai, Bangalore, and Hyderabad. Please reach out at least 2-3 weeks in advance so we can coordinate schedules and ensure you get the best experience seeing our students in action.',
+      'Absolutely. We love hosting visitors at our courts in Chennai, Mumbai, Delhi, Hyderabad, and Bangalore. Please reach out at least 2-3 weeks in advance so we can coordinate schedules and ensure you get the best experience seeing our students in action.',
   },
 ]
 
@@ -262,7 +262,7 @@ export default function ContactClient() {
               </div>
               <h3 className="text-xl font-black mb-3">Our Locations</h3>
               <p className="text-white/60 leading-relaxed">
-                Chennai &bull; Bangalore &bull; Hyderabad
+                Chennai &bull; Mumbai &bull; Delhi &bull; Hyderabad &bull; Bangalore
                 <br />
                 <span className="text-white/40">India</span>
               </p>

@@ -46,9 +46,11 @@ const programs = [
 ]
 
 const locations = [
-  { city: 'Chennai', year: '2012', students: '800+' },
+  { city: 'Chennai', year: '2012', students: '2,000+' },
+  { city: 'Mumbai', year: '2019', students: '100' },
+  { city: 'Delhi', year: '2019', students: '100' },
+  { city: 'Hyderabad', year: '2022 (one-year program)', students: '150' },
   { city: 'Bangalore', year: '2024', students: '105' },
-  { city: 'Hyderabad', year: '2022 (one-year program)', students: '500+' },
 ]
 
 export default function ProgramsClient() {
@@ -210,11 +212,11 @@ export default function ProgramsClient() {
             </span>
             <h2 className="section-title mb-6">Our Locations</h2>
             <p className="text-xl text-white/60 max-w-3xl mx-auto">
-              Active programs in three major Indian cities, with plans to expand.
+              Programs in five Indian cities, with plans to expand.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-8">
             {locations.map((location, index) => (
               <motion.div
                 key={location.city}
@@ -223,7 +225,7 @@ export default function ProgramsClient() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
-                className="glass rounded-3xl p-10 text-center card-glow"
+                className="glass rounded-3xl p-10 text-center card-glow w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.4rem)]"
               >
                 <MapPin className="w-12 h-12 text-orange-primary mx-auto mb-4" />
                 <h3 className="font-display text-4xl gradient-text mb-2">{location.city}</h3>

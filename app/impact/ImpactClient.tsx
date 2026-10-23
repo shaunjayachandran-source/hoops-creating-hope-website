@@ -10,7 +10,7 @@ import { images, siteConfig } from '@/lib/utils'
 // Impact stats
 const impactStats = [
   { number: '85%', label: 'School Completion Rate', description: 'Our students complete high school at 5.3x the rate of their demographic', icon: GraduationCap },
-  { number: '2,500+', label: 'Students Impacted', description: 'Lives changed across Chennai, Bangalore, and Hyderabad since 2012', icon: Users },
+  { number: '2,500+', label: 'Students Impacted', description: 'Lives changed across Chennai, Mumbai, Delhi, Hyderabad, and Bangalore since 2012', icon: Users },
   { number: '60%', label: 'Female Participation', description: 'Empowering girls through sports in communities where opportunities are scarce', icon: Heart },
   { number: '<15%', label: 'Dropout Rate', description: 'Compared to 62% national dropout rate for similar demographics', icon: TrendingUp },
 ]

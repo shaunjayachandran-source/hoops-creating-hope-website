@@ -451,7 +451,7 @@ export default function TeamClient() {
             className="text-xl text-gray-400 leading-relaxed"
           >
             Together, they ensure that every decision we make serves our{' '}
-            <span className="text-orange-primary font-bold">2,500+ students</span> across Chennai, Bangalore, and Hyderabad.
+            <span className="text-orange-primary font-bold">2,500+ students</span> across Chennai, Mumbai, Delhi, Hyderabad, and Bangalore.
           </motion.p>
         </div>
       </section>

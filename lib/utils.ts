@@ -77,7 +77,7 @@ export const navLinks = {
 
 // Stats data
 export const stats = [
-  { number: '2,500+', label: 'Children Impacted', description: 'Lives changed across Chennai, Bangalore, and Hyderabad since 2012' },
+  { number: '2,500+', label: 'Children Impacted', description: 'Lives changed across Chennai, Mumbai, Delhi, Hyderabad, and Bangalore since 2012' },
   { number: '85%', label: 'High School Retention', description: 'Our students complete high school at 5.3x the rate of their demographic' },
   { number: '60%', label: 'Girls in Leadership', description: 'Empowering girls through sports in communities where opportunities are scarce' },
   { number: `${yearsOfImpact}+`, label: 'Years of Impact', description: 'Proven track record of transforming lives through basketball' },

@@ -51,7 +51,7 @@ const programs = [
   },
   {
     title: 'Community Courts',
-    description: 'Building safe spaces where dreams take flight in Chennai, Bangalore & Hyderabad.',
+    description: 'Building safe spaces where dreams take flight in Chennai, Mumbai, Delhi, Hyderabad, and Bangalore.',
     icon: MapPin,
     color: 'from-orange-light to-purple-accent',
     image: images.outdoorCourt,
@@ -103,60 +103,48 @@ export default function HomePage() {
             transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
             className="mb-6"
           >
-            <span className="inline-flex items-center gap-2 glass-dark px-6 py-3 rounded-full text-sm font-bold tracking-wider uppercase border border-white/10">
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              Changing Lives Since 2012
+            <span className="inline-block glass-dark px-5 py-3 rounded-full text-xs sm:text-sm font-bold tracking-[0.15em] sm:tracking-wider uppercase leading-relaxed text-center border border-white/10">
+              Basketball. Education. Gender Equality. Opportunity.
             </span>
           </motion.div>
 
           {/* Main headline */}
-          {/* Sized by viewport height as well as width so all four lines fit above the fold on wide, short screens */}
-          <h1 className="[font-size:clamp(3rem,min(10vw,11vh),8rem)] font-display text-white mb-6 leading-[0.9] text-center">
-            <SplitText
-              text="EVERY"
-              className="block"
-              charClassName="inline-block"
-              stagger={0.03}
-            />
-            <span className="block mt-2">
+          {/* Two lines on wide screens (wraps to four on phones); sized by width and height so the buttons stay above the fold */}
+          <h1 className="[font-size:clamp(2.75rem,min(7.5vw,10vh),6.5rem)] font-display text-white mb-6 leading-[0.95] text-center">
+            <span className="block">
+              <SplitText
+                text="EVERY"
+                className="inline-block mr-[0.15em]"
+                charClassName="inline-block"
+                stagger={0.03}
+              />
               <SplitText
                 text="DRIBBLE"
-                className=""
+                className="inline-block"
                 charClassName="inline-block gradient-text"
                 delay={0.2}
                 stagger={0.03}
               />
             </span>
             <SplitText
-              text="REWRITES"
-              className="block mt-2"
+              text="OPENS A DOOR."
+              className="block mt-1 text-white/95"
               charClassName="inline-block"
               delay={0.4}
               stagger={0.03}
             />
-            <span className="block mt-2">
-              <SplitText
-                text="THE FUTURE"
-                className="text-white/95"
-                charClassName="inline-block"
-                delay={0.6}
-                stagger={0.03}
-              />
-            </span>
           </h1>
 
-          {/* Subheadline */}
+          {/* Supporting copy */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="text-xl md:text-2xl text-white/95 max-w-3xl mx-auto mb-8 font-medium text-center"
+            className="text-base sm:text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-8 font-medium text-center leading-relaxed"
           >
-            Basketball Isn&apos;t Just a Game — It&apos;s a Pathway to Opportunity in India.
-            <br className="hidden sm:block" />
-            <span className="text-white/70">
-              We empower underserved youth in India with basketball, mentorship &amp; life skills — leading to better education, leadership opportunities, and lifelong confidence
-            </span>
+            Hoops Creating Hope uses basketball as a vehicle of change using academic lessons, leadership training, and
+            mentorship to help young people in underserved communities in India stay in school, build confidence, avoid
+            child marriages, and shape their futures.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -184,6 +172,24 @@ export default function HomePage() {
           </motion.div>
         </div>
       </VideoHero>
+
+      {/* KEY FACTS: directly below the hero */}
+      <section aria-label="Hoops Creating Hope at a glance" className="bg-dark border-b border-white/10">
+        <dl className="max-w-5xl mx-auto grid grid-cols-3 divide-x divide-white/10 text-center py-6 md:py-8">
+          <div className="px-2">
+            <dt className="text-xs md:text-sm uppercase tracking-widest text-gray-400 mb-1">Founded</dt>
+            <dd className="font-display text-3xl md:text-5xl gradient-text">{siteConfig.founded}</dd>
+          </div>
+          <div className="px-2">
+            <dt className="text-xs md:text-sm uppercase tracking-widest text-gray-400 mb-1">Launched</dt>
+            <dd className="font-display text-3xl md:text-5xl gradient-text">{siteConfig.firstProgram}</dd>
+          </div>
+          <div className="px-2">
+            <dt className="text-xs md:text-sm uppercase tracking-widest text-gray-400 mb-1">Students served</dt>
+            <dd className="font-display text-3xl md:text-5xl gradient-text">2,500+</dd>
+          </div>
+        </dl>
+      </section>
 
       {/* STATS TICKER */}
       <section className="py-6 bg-gradient-to-r from-orange-primary via-orange-light to-orange-primary relative overflow-hidden">
@@ -323,7 +329,7 @@ export default function HomePage() {
               transition={{ delay: 0.5 }}
               className="text-gray-400 max-w-2xl mx-auto"
             >
-              From Chennai where it all started, to Bangalore and Hyderabad, we&apos;re building a network of hope across India.
+              From Chennai where it all started, to Mumbai, Delhi, Hyderabad and Bangalore, we&apos;re building a network of hope across India.
             </motion.p>
           </div>
 
