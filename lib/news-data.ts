@@ -51,17 +51,98 @@ export const newsArticles: NewsArticle[] = [
   },
 ];
 
-// Independent press coverage of Hoops Creating Hope / Crossover and Shaun Jayachandran.
-// Dates are the publication dates shown on each outlet's page. Summaries are our own words.
+// Independent press and video coverage of Hoops Creating Hope / Crossover Basketball and Scholars
+// Academy and its founder. Each item was opened and checked: outlet, title and date come from the
+// page itself. Summaries are our own words. Items whose original page is gone link to an archived copy.
 export interface PressItem {
   outlet: string;
   title: string;
+  /** ISO date. For items only dated by month, use the 1st and set datePrecision: 'month'. */
   date: string;
+  datePrecision?: 'month';
   url: string;
   summary: string;
+  kind?: 'article' | 'video';
+  /** The original page is offline; url points to the Internet Archive copy. */
+  archived?: boolean;
 }
 
-export const pressCoverage: PressItem[] = [
+const press: PressItem[] = [
+  {
+    outlet: 'NBA.com India',
+    title: 'From Hoops to Hope',
+    date: '2019-04-02',
+    url: 'https://web.archive.org/web/20201219160446/https://in.nba.com/news/hoops-to-hope-crossover-basketball-wnba-star-alana-beard-teach-for-india-amar-jyoti-foundation/b6hrsmk7o3mu1kpmj614litpu',
+    archived: true,
+    summary: 'Karan Madhok reports from New Delhi as WNBA star Alana Beard joins the Hoops Creating Hope program with Teach For India and the Amar Jyoti Foundation.',
+  },
+  {
+    outlet: 'Diya TV',
+    title: 'Diya TV News Headlines for Tuesday, January 22nd, 2019',
+    date: '2019-01-22',
+    url: 'https://www.youtube.com/watch?v=X6n_6dfuY00',
+    kind: 'video',
+    summary: 'Includes a segment on WNBA players supporting Crossover Basketball and its Hoops Creating Hope program.',
+  },
+  {
+    outlet: 'SLAM',
+    title: 'World Runners',
+    date: '2017-08-04',
+    url: 'https://slamonline.com/international/crossover-academy-india-basketball/',
+    summary: 'Conrad Kaczmarek goes inside the summer program in Chennai, from its 2012 pilot with 45 students to coaching hundreds of girls and boys side by side.',
+  },
+  {
+    outlet: 'Brown Girl Magazine',
+    title: 'Shaun Jayachandran Gives Kids in India a Chance at Education Using Basketball',
+    date: '2017-06-05',
+    url: 'https://browngirlmagazine.com/shaun-jay-basketball-program-underprivileged-kids-school/',
+    summary: 'A profile of the founder and the program\'s focus on leadership, gender equity and keeping students in school.',
+  },
+  {
+    outlet: 'Khabar',
+    title: 'Good Sports: Hoops Creating Hope',
+    date: '2017-04-01',
+    datePrecision: 'month',
+    url: 'https://khabar.com/column/chai-time/good-sports-hoops-creating-hope/',
+    summary: 'Introduces the free two-week summer program in Chennai and the Indian-American college players who volunteer as coaches.',
+  },
+  {
+    outlet: 'Ekalavyas',
+    title: 'Crossover Basketball & Scholars Academy - Creating Hope through hoops',
+    date: '2015-08-03',
+    url: 'https://www.ekalavyas.com/p/crossover-basketball-scholars-academy-creating-hope-hoops',
+    summary: 'An interview with the founder about the Chennai camp, its volunteer model and plans to grow.',
+  },
+  {
+    outlet: 'The Washington Post',
+    title: 'At basketball camp in India, Maryland\'s Varun Ram lends a helping hand',
+    date: '2015-06-24',
+    url: 'https://www.washingtonpost.com/news/terrapins-insider/wp/2015/06/24/at-basketball-camp-in-india-marylands-varun-ram-lends-a-helping-hand/',
+    summary: 'Follows a University of Maryland player volunteering as a coach with the program in Chennai.',
+  },
+  {
+    outlet: 'TEDx Talks',
+    title: 'Basketball lessons to education | Shaun Jayachandran | TEDxSomerville',
+    date: '2014-11-25',
+    url: 'https://www.youtube.com/watch?v=MmM4R6qcWvY',
+    kind: 'video',
+    summary: 'The founder\'s TEDx talk on how the leadership lessons kids learn on the court carry into the classroom.',
+  },
+  {
+    outlet: 'Dream About Sports',
+    title: 'Shaun J founder of Crossover basketball shares his experiences with DAS',
+    date: '2014-09-14',
+    url: 'https://www.youtube.com/watch?v=zMYl2iqsQSI',
+    kind: 'video',
+    summary: 'A video conversation with the founder about using basketball as a vehicle for education in India.',
+  },
+  {
+    outlet: 'The American Bazaar',
+    title: 'Helping reach goals by shooting through hoops',
+    date: '2013-04-03',
+    url: 'https://americanbazaaronline.com/2013/04/03/helping-reach-goals-by-shooting-through-hoops/',
+    summary: 'Covers a 3-on-3 tournament in the Washington, DC area raising funds for the program in India.',
+  },
   {
     outlet: 'Tufts Daily',
     title: 'Caring changes communities with Crossover Basketball',
@@ -91,6 +172,9 @@ export const pressCoverage: PressItem[] = [
     summary: 'An interview with Shaun Jayachandran about his coaching background and why he sees sports and academics as connected.',
   },
 ];
+
+// Newest first
+export const pressCoverage: PressItem[] = [...press].sort((a, b) => b.date.localeCompare(a.date));
 
 // Helper function to get articles by category
 export function getArticlesByCategory(category: NewsArticle['category']) {
