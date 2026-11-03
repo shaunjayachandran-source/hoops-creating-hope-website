@@ -9,7 +9,8 @@ import { cn, siteConfig } from '@/lib/utils'
 import { blogPosts, type BlogPost } from '@/lib/data/blog-posts'
 import { pressCoverage } from '@/lib/news-data'
 
-const categories = ['All', 'Impact', 'Programs', 'Community', 'Events', 'Press'] as const
+// Only show filter tabs for categories that actually have stories
+const categories = ['All', ...Array.from(new Set(blogPosts.map((p) => p.category)))] as const
 
 function formatDate(dateString: string): string {
   return new Date(dateString).toLocaleDateString('en-US', {
@@ -288,7 +289,7 @@ export default function NewsClient() {
             In the Press
           </h2>
           <p className="text-gray-400 mb-10 max-w-2xl">
-            What independent outlets have written about Hoops Creating Hope and our founder.
+            Articles and videos from independent outlets about Hoops Creating Hope (formerly Crossover Basketball and Scholars Academy) and our founder.
           </p>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {pressCoverage.map((item) => (
@@ -300,7 +301,11 @@ export default function NewsClient() {
                   className="group block h-full glass border border-white/10 hover:border-orange-primary/40 rounded-2xl p-6 transition-colors"
                 >
                   <p className="text-sm text-orange-primary font-bold uppercase tracking-wide mb-2">
-                    {item.outlet} &middot; {formatDate(item.date)}
+                    {item.kind === 'video' && <span>Video &middot; </span>}
+                    {item.outlet} &middot;{' '}
+                    {item.datePrecision === 'month'
+                      ? new Date(item.date + 'T12:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long' })
+                      : formatDate(item.date + 'T12:00:00')}
                   </p>
                   <h3 className="text-xl font-bold text-white mb-3 group-hover:text-orange-primary transition-colors">
                     {item.title}
@@ -308,6 +313,9 @@ export default function NewsClient() {
                     <span className="sr-only"> (opens in a new tab)</span>
                   </h3>
                   <p className="text-gray-400 leading-relaxed">{item.summary}</p>
+                  {item.archived && (
+                    <p className="mt-3 text-xs text-gray-500">Original page is offline; links to an archived copy.</p>
+                  )}
                 </a>
               </li>
             ))}
